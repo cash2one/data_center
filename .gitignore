@@ -4,4 +4,6 @@
 *.swp
 *.py.swo
 *.py~
-
+*.log
+data_spider/conf/set_env.py
+data_spider/conf/settings.py

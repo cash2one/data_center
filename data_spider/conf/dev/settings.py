@@ -27,15 +27,15 @@ MGDBS = {
 
 
 #利用mongodb 自带的connection poll 来管理数据库连接
-user_conn = Connection(host=MGDBS['user']['HOST'],port=MGDBS['user']['PORT'])
+mongoConn = Connection(host=MGDBS['user']['HOST'],port=MGDBS['user']['PORT'])
 
 
 sys.path.append(os.path.join(os.path.dirname(__file__),'../..'))
-log_path = os.path.normpath(os.path.join(os.path.dirname(__file__),'../user_center.log'))
+log_path = os.path.normpath(os.path.join(os.path.dirname(__file__),'../data_spider.dev.log'))
 
-from user_center.conf import set_env
+from data_spider.conf import set_env
 set_env.getEnvReady()
-logger = logging.getLogger("user_center")
+logger = logging.getLogger("data_spider")
 hdlr = logging.FileHandler(log_path)
 hdlr.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s %(levelname)-8s %(name)s:%(lineno)-15d %(message)s')
@@ -44,25 +44,7 @@ logger.addHandler(hdlr)
 logger.setLevel(logging.DEBUG)
 logger.propagate = False
 
-
-#id 保证唯一 可以不连续
-WORKER_DICT = {
-        1:'雯雯',
-        2:'牛牛',
-        3:'贝贝',
-        4:'欣欣',
-        5:'龙龙',
-        6:'蓉蓉',
-        7:'轩轩',
-        8:'西西',
-        9:'珍珍',
-        121:'嘉嘉',
-        11:'茂茂',
-        }
-FULL_NUM = 5000
-
-ARTICLE_LIST = ['ts-1796606', 'ts-1797607', 'ts-1817244']
-STATUS_ARTICLE_LIST = ['ts-1796606', 'ts-1797607']
-WORKER_ID_XUQIAN = [3,4,5,6,12,16,51,52,53,54]
-WORKER_ID_VIP = [1,7,8,101]
-
+#网销宝账号
+WXB_ACCOUNT = {"nick":"麦苗科技营销","passwd":"Mm-marketing2#","_tb_token":"ylD7uO2T8sm","agent_nick":None}
+base_path = os.path.join(os.path.dirname(__file__),'../')
+RPT_PATH =  os.path.normpath(os.path.join(base_path,"rpt"))
